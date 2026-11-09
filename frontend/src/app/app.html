@@ -1,0 +1,34 @@
+<main>
+  <h1>Todos</h1>
+
+  <form class="add" (submit)="$event.preventDefault(); add()">
+    <input
+      name="title"
+      placeholder="What needs to be done?"
+      maxlength="200"
+      [value]="newTitle()"
+      (input)="newTitle.set($any($event.target).value)"
+    />
+    <button type="submit" [disabled]="!newTitle().trim()">Add</button>
+  </form>
+
+  @if (error(); as message) {
+    <p class="error" role="alert">{{ message }}</p>
+  }
+
+  <ul>
+    @for (todo of todos(); track todo.id) {
+      <li [class.done]="todo.done">
+        <label>
+          <input type="checkbox" [checked]="todo.done" (change)="toggle(todo)" />
+          <span class="title">{{ todo.title }}</span>
+        </label>
+        <button class="delete" type="button" (click)="remove(todo)" [attr.aria-label]="'Delete ' + todo.title">✕</button>
+      </li>
+    } @empty {
+      <li class="empty">Nothing to do 🎉</li>
+    }
+  </ul>
+
+  <p class="summary">{{ remaining() }} of {{ todos().length }} remaining</p>
+</main>

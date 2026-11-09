@@ -1,0 +1,52 @@
+main {
+  max-width: 480px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+h1 {
+  margin-bottom: 1rem;
+}
+.add {
+  display: flex;
+  gap: 0.5rem;
+}
+.add input {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #ddd;
+}
+li.done .title {
+  text-decoration: line-through;
+  color: #888;
+}
+.delete {
+  background: none;
+  border: none;
+  color: #c00;
+}
+.empty {
+  color: #888;
+  justify-content: center;
+}
+.error {
+  color: #c00;
+}
+.summary {
+  color: #555;
+  font-size: 0.9rem;
+}
