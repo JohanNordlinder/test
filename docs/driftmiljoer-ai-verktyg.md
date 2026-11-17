@@ -35,10 +35,8 @@ Var de två delarna körs avgör vilken data som lämnar organisationen, vilka m
 
 Det finns 3 × 3 = **9 kombinationer**.
 
-Förklaring av kolumnerna:
+Förklaring av kolumnen:
 - **Data lämnar LM:** om kod eller prompter skickas utanför Lantmäteriets kontroll.
-- **Modellkvalitet:** förväntad förmåga hos modellen (Hög = de största kommersiella modellerna).
-- **Genomförbarhet:** hur realistisk kombinationen är tekniskt och praktiskt.
 
 ### Översiktsmatris
 
@@ -50,17 +48,17 @@ Förklaring av kolumnerna:
 
 ### Detaljerad tabell
 
-| # | Modell | Verktyg | Data lämnar LM | Modellkvalitet | Genomförbarhet | Kommentar |
-|---|---|---|---|---|---|---|
-| 1 | Moln | Moln | Ja | Hög | Hög | Enklast att komma igång med, men både kod och prompter hanteras av extern leverantör. Kräver avtal och klassning av data. |
-| 2 | Moln | Lantmäteriets driftmiljö | Ja | Hög | Hög | Interna verktyg (t.ex. intern chatt, VDI, pipeline) anropar molnmodell. Ger central inloggning, loggning och kostnadskontroll. En AI-gateway kan maskera känslig information innan den skickas ut. |
-| 3 | Moln | PC | Ja | Hög | Hög | Vanligaste upplägget idag, t.ex. Copilot eller Claude Code i IDE eller terminal. CLI-agenter kan köra kommandon lokalt, så behörigheter behöver styras. |
-| 4 | Lantmäteriets driftmiljö | Moln | Ja | Medel | Låg | Kräver att intern modell exponeras mot internet för att molnverktyget ska nå den. Säkerhetsmässigt olämpligt och sällan praktiskt. |
-| 5 | Lantmäteriets driftmiljö | Lantmäteriets driftmiljö | Nej | Medel | Hög | Både verktyg och modell ligger internt. Stark säkerhetsprofil och lämpligt för känslig information. |
-| 6 | Lantmäteriets driftmiljö | PC | Nej | Medel | Hög | Lokala verktyg som stöder egna endpoints (t.ex. Continue, Cline, Aider) konfigureras mot intern modell. Agentförmågan beror på modellens kvalitet. |
-| 7 | PC | Moln | Nej/Ja* | Låg–medel | Låg | Molnverktyg kan normalt inte nå en modell på utvecklarens PC. *Kod kan ändå ligga i molnverktyget. Sällan relevant. |
-| 8 | PC | Lantmäteriets driftmiljö | Nej | Låg–medel | Låg | Centrala tjänster som anropar modeller på enskilda PC:ar är ovanligt, svårt att förvalta och ger ingen tydlig nytta. |
-| 9 | PC | PC | Nej | Låg–medel | Medel | Helt offline. Kräver kraftfull dator (GPU/mycket minne). Lämpar sig för enkel kodkomplettering och experiment, men små modeller klarar sällan komplexa agentflöden. |
+| # | Modell | Verktyg | Data lämnar LM | Kommentar |
+|---|---|---|---|---|
+| 1 | Moln | Moln | Ja | Enklast att komma igång med, men både kod och prompter hanteras av extern leverantör. Kräver avtal och klassning av data. |
+| 2 | Moln | Lantmäteriets driftmiljö | Ja | Interna verktyg (t.ex. intern chatt, VDI, pipeline) anropar molnmodell. Ger central inloggning, loggning och kostnadskontroll. En AI-gateway kan maskera känslig information innan den skickas ut. |
+| 3 | Moln | PC | Ja | Vanligaste upplägget idag, t.ex. Copilot eller Claude Code i IDE eller terminal. CLI-agenter kan köra kommandon lokalt, så behörigheter behöver styras. |
+| 4 | Lantmäteriets driftmiljö | Moln | Ja | Kräver att intern modell exponeras mot internet för att molnverktyget ska nå den. Säkerhetsmässigt olämpligt och sällan praktiskt. |
+| 5 | Lantmäteriets driftmiljö | Lantmäteriets driftmiljö | Nej | Både verktyg och modell ligger internt. Stark säkerhetsprofil och lämpligt för känslig information. |
+| 6 | Lantmäteriets driftmiljö | PC | Nej | Lokala verktyg som stöder egna endpoints (t.ex. Continue, Cline, Aider) konfigureras mot intern modell. Agentförmågan beror på modellens kvalitet. |
+| 7 | PC | Moln | Nej/Ja* | Molnverktyg kan normalt inte nå en modell på utvecklarens PC. *Kod kan ändå ligga i molnverktyget. Sällan relevant. |
+| 8 | PC | Lantmäteriets driftmiljö | Nej | Centrala tjänster som anropar modeller på enskilda PC:ar är ovanligt, svårt att förvalta och ger ingen tydlig nytta. |
+| 9 | PC | PC | Nej | Helt offline. Kräver kraftfull dator (GPU/mycket minne). Lämpar sig för enkel kodkomplettering och experiment, men små modeller klarar sällan komplexa agentflöden. |
 
 ---
 
